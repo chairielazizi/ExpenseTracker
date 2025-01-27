@@ -11,12 +11,13 @@
 </p>
 <div class="row">
     <div class="col-md-7">
-         <ejs-grid id="categories" dataSource="@Model" gridLines="None">
+         <ejs-grid id="categories" dataSource="@Model" gridLines="None" allowSorting="true" allowPaging="true">
+			<e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
              <e-grid-columns>
-                <e-grid-column field="TitleWithIcon" headerText="Category" width="120"></e-grid-column>
+                <e-grid-column field="TitleWithIcon" headerText="Category" width="150px"></e-grid-column>
                 @* <e-grid-column field="Icon" headerText="Icon" width="120"></e-grid-column> *@
-                <e-grid-column field="TransactionType" headerText="Transaction Type" width="120"></e-grid-column>
-                <e-grid-column headerText="Actions" width="120"></e-grid-column>
+                <e-grid-column template="#typeColumnTemplate" headerText="Transaction Type" width="150px"></e-grid-column>
+                <e-grid-column template="#actionColumnTemplate" headerText="Actions" width="100px"></e-grid-column>
       @*                <e-template> *@
 						@* <button class="btn btn-primary" onclick="">Edit</button> *@
              </e-grid-columns>
@@ -28,3 +29,19 @@
         </div>
     </div>
 </div>
+
+<script id="typeColumnTemplate" type="text/x-template">
+	${if(TransactionType=="Income")}
+        <span class="badge bg-success">${TransactionType}</span>
+	${else}
+	    <span class="badge bg-danger">${TransactionType}</span>
+	${/if}
+</script>
+
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+		<a class="btn btn-sm" href="/Category/AddOrEdit/${CategoryId}">
+            <i class="fa-solid fa-pen fa-xl no-a-decoration"></i>    
+        </a>
+    </div>
+</script>
