@@ -36,6 +36,12 @@ body {
     font-size: x-large;
 }
 
+/*grid*/
+.e-grid {
+    border: 0;
+    border-radius: 5px;
+}
+
 .widget {
     border-radius: 1rem;
     background-color: #1e232b;
