@@ -2,13 +2,16 @@
 
 @{
     ViewData["Title"] = "Index";
+	ViewData["PageTitle"] = "Categories";
+    ViewData["PageActionText"] = "+ New Category";
+    ViewData["PageActionUrl"] = "/Category/AddOrEdit";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="AddOrEdit">Create New</a>
-</p>
+
+@* <p> *@
+@*     <a asp-action="AddOrEdit">Create New</a> *@
+@* </p> *@
 <div class="row">
     <div class="col-md-7">
          <ejs-grid id="categories" dataSource="@Model" gridLines="None" allowSorting="true" allowPaging="true">
@@ -18,8 +21,6 @@
                 @* <e-grid-column field="Icon" headerText="Icon" width="120"></e-grid-column> *@
                 <e-grid-column template="#typeColumnTemplate" headerText="Transaction Type" width="150px"></e-grid-column>
                 <e-grid-column template="#actionColumnTemplate" headerText="Actions" width="100px"></e-grid-column>
-      @*                <e-template> *@
-						@* <button class="btn btn-primary" onclick="">Edit</button> *@
              </e-grid-columns>
          </ejs-grid>
     </div>
