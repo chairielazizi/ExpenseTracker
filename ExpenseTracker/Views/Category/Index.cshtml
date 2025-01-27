@@ -43,5 +43,11 @@
 		<a class="btn btn-sm" href="/Category/AddOrEdit/${CategoryId}">
             <i class="fa-solid fa-pen fa-xl no-a-decoration"></i>    
         </a>
+        <form action="/Category/Delete/${CategoryId}" method="post">
+	        @Html.AntiForgeryToken() @*because using template need to specify the forgery token *@
+			<button type="submit" class="btn btn-sm btn-link no-a-decoration" onclick="return confirm(&quot;Are you sure want to delete this record?&quot;)">
+				<i class="fa-solid fa-trash fa-xl text-danger"></i>
+			</button>
+        </form>
     </div>
 </script>
