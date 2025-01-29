@@ -7,27 +7,26 @@ html {
     font-size: 16px;
   }
 }
-
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-    position: relative;
-    min-height: 100%;
-    font-family: "Poppins", serif;
-    font-weight: 400;
-    font-style: normal;
+  position: relative;
+  min-height: 100%;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 *:not(.fa-solid):not(.fa):not(.e-icons) {
-    font-family: "Poppins", serif;
+  font-family: "Poppins", serif;
 }
 
 body {
-    margin-bottom: 60px;
-    background-color: #12161d;
-    color: white;
+  margin-bottom: 60px;
+  background-color: #12161d;
+  color: white;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -40,33 +39,34 @@ body {
 }
 
 .e-bigger {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 /*breadcrumb*/
 .e-breadcrumb a, .e-breadcrumb a:hover {
-    text-decoration: none !important;
-    color: inherit !important
+  text-decoration: none !important;
+  color: inherit !important;
 }
+
 /*button*/
 .btn-focus, .btn-active {
-    outline: none !important;
-    box-shadow: none;
+  outline: none !important;
+  box-shadow: none;
 }
 
 /*hyperlink*/
 .no-a-decoration, .no-a-decoration:hover {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 /*grid*/
 .e-grid {
-    border: 0;
-    border-radius: 5px;
+  border: 0;
+  border-radius: 5px;
 }
 
 .widget {
-    border-radius: 1rem;
-    background-color: #1e232b;
+  border-radius: 1rem;
+  background-color: #1e232b;
 }
