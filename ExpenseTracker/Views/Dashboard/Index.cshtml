@@ -98,6 +98,37 @@
 	</div>
 </div>
 
+@* recent transactions *@
+<div class="row">
+	<div class="col-md-6">
+		<div class="widget">
+			<div class="title p-4">
+				<h5 class="fw-bold">Recent Transactions</h5>
+			</div>
+			<div class="px-4 pb-4">
+				<ejs-grid id="recent-transactions" dataSource="@ViewBag.RecentTransactions" gridLines="None" allowSorting="true" allowPaging="false">
+				<e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+				<e-grid-columns>
+					<e-grid-column field="Date" headerText="Date" width="110px" format="MMM-dd-yyyy"></e-grid-column>
+					<e-grid-column field="Category.TitleWithIcon" headerText="Category" width="150px"></e-grid-column>
+					<e-grid-column field="Amount" headerText="Amount" width="100px" format="c2"></e-grid-column>
+					<e-grid-column field="Note" headerText="Note" width="150px"></e-grid-column>
+				</e-grid-columns>
+			</ejs-grid>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="widget h-100">
+			<div class="d-flex justify-content-center align-items-center h-100">
+			<span>
+				<i class="fa-solid fa-plus fa-2xl"> Widget</i>
+			</span>
+		</div>
+		</div>
+	</div>
+</div>
+
 @section Scripts {
 	<script src="https://cdn.syncfusion.com/ej2/ej2-locale/ej2-locale.js"></script>
 	<script>

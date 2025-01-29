@@ -46,6 +46,30 @@ body {
   margin-left: 250px;
 }
 
+/* Navbar */
+nav.navbar {
+  background-color: rgb(18, 22, 29);
+  margin-left: 290px;
+}
+nav.navbar i {
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+nav.navbar i:hover, nav.navbar i img:hover {
+  cursor: pointer;
+  background-color: rgba(72, 84, 95, 0.0784313725);
+  transform: scale(1.05) translateZ(0px);
+}
+
+img.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
 /*breadcrumb*/
 .e-breadcrumb a, .e-breadcrumb a:hover {
   text-decoration: none !important;

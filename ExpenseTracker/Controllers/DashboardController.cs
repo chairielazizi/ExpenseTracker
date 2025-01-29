@@ -109,6 +109,14 @@ namespace ExpenseTracker.Controllers
                                           expense = expense == null ? 0 : expense.expense
                                       };
 
+            //recent transactions
+            List<Transaction> recentTransactions = await _context.Transactions
+                .Include(x => x.Category) // for foreign key filled in
+                .OrderByDescending(t => t.Date)
+                .Take(5)
+                .ToListAsync();
+            ViewBag.RecentTransactions = recentTransactions;
+
             return View();
         }
     }
