@@ -42,6 +42,28 @@
 	</div>
 </div>
 
+@* Donat and spline chart *@
+<div class="row mb-4">
+	<div class="col-md-4">
+		<div class="widget chart">
+			<div class="title p-4">
+				<h5 class="fw-bold">Expense by Category</h5>
+			</div>
+			<ejs-accumulationchart id="donatChart" background="#1a222b">
+                <e-accumulation-series-collection>
+                    <e-accumulation-series dataSource="@ViewBag.DonatChartData" xName="categoryTitleWithIcon" yName="amount"innerRadius="60%" legendShape="Circle" enableSmartLabels>
+                        <e-accumulationseries-datalabel visible="true" name="formattedAmount"></e-accumulationseries-datalabel>
+                    </e-accumulation-series>
+                </e-accumulation-series-collection>
+				<e-accumulationchart-legendsettings visible="true" position="Top" toggleVisibility="true">
+					<e-legendsettings-textstyle color="white" size="1rem"></e-legendsettings-textstyle>
+				</e-accumulationchart-legendsettings>
+				<e-accumulationchart-tooltipsettings enable="true" format="${point.x}: RM${point.y}"></e-accumulationchart-tooltipsettings>
+            </ejs-accumulationchart>
+		</div>
+	</div>
+</div>
+
 @section Scripts {
 	<script src="https://cdn.syncfusion.com/ej2/ej2-locale/ej2-locale.js"></script>
 	<script>

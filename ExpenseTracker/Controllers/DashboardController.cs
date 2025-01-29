@@ -46,6 +46,26 @@ namespace ExpenseTracker.Controllers
             decimal Balance = TotalIncome - TotalExpense;
             ViewBag.Balance = Balance.ToString("RM 0.00");
 
+            //donat chart data - expense category
+            var donatChartData = SelectedTransactions
+                .Where(x => x.Category.TransactionType == "Expense")
+                .GroupBy(y => y.Category.CategoryId)
+                .Select(z => new  // instead using separate class, use anonymous class
+                {
+                    categoryTitleWithIcon = z.First().Category.Icon + " " + z.First().Category.Title,
+                    amount = z.Sum(y => y.Amount),
+                    formattedAmount = z.Sum(y => y.Amount).ToString("C", new CultureInfo("ms-MY"))
+                })
+                .ToList();
+
+            // Debugging: Check the donat chart data
+            foreach (var data in donatChartData)
+            {
+                Console.WriteLine($"Category: {data.categoryTitleWithIcon}, Amount: {data.amount}, Formatted Amount: {data.formattedAmount}");
+            }
+
+            ViewBag.DonatChartData = donatChartData;
+
             return View();
         }
     }
