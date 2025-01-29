@@ -56,6 +56,7 @@ namespace ExpenseTracker.Controllers
                     amount = z.Sum(y => y.Amount),
                     formattedAmount = z.Sum(y => y.Amount).ToString("C", new CultureInfo("ms-MY"))
                 })
+                .OrderByDescending(z => z.amount)
                 .ToList();
 
             // Debugging: Check the donat chart data
@@ -66,7 +67,56 @@ namespace ExpenseTracker.Controllers
 
             ViewBag.DonatChartData = donatChartData;
 
+            //spline chart data - income vs expense
+            //income
+            List<SplineChartData> incomeChartData = SelectedTransactions
+                .Where(x => x.Category.TransactionType == "Income")
+                .GroupBy(y => y.Date)
+                .Select(z => new SplineChartData
+                {
+                    day = z.Key.ToString("dd-MMM"),
+                    income = z.Sum(y => y.Amount),
+                    expense = 0
+                })
+                .OrderBy(z => z.day)
+                .ToList();
+            //expense
+            List<SplineChartData> expenseChartData = SelectedTransactions
+                .Where(x => x.Category.TransactionType == "Expense")
+                .GroupBy(y => y.Date)
+                .Select(z => new SplineChartData
+                {
+                    day = z.Key.ToString("dd-MMM"),
+                    income = 0,
+                    expense = z.Sum(y => y.Amount)
+                })
+                .OrderBy(z => z.day)
+                .ToList();
+            //merge
+            string[] last7days = Enumerable.Range(0, 7)
+                .Select(i => StartDate.AddDays(i).ToString("dd-MMM"))
+                .ToArray();
+
+            ViewBag.SplineChartData = from day in last7days
+                                      join income in incomeChartData on day equals income.day into gj1
+                                      from income in gj1.DefaultIfEmpty()
+                                      join expense in expenseChartData on day equals expense.day into gj2
+                                      from expense in gj2.DefaultIfEmpty()
+                                      select new SplineChartData
+                                      {
+                                          day = day,
+                                          income = income == null ? 0 : income.income,
+                                          expense = expense == null ? 0 : expense.expense
+                                      };
+
             return View();
         }
+    }
+    public class SplineChartData
+    {
+        public string day;
+        public decimal income;
+        public decimal expense;
+
     }
 }

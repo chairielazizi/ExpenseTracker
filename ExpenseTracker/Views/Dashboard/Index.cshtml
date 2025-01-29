@@ -44,6 +44,7 @@
 
 @* Donat and spline chart *@
 <div class="row mb-4">
+	@* donat chart *@
 	<div class="col-md-4">
 		<div class="widget chart">
 			<div class="title p-4">
@@ -60,6 +61,39 @@
 				</e-accumulationchart-legendsettings>
 				<e-accumulationchart-tooltipsettings enable="true" format="${point.x}: RM${point.y}"></e-accumulationchart-tooltipsettings>
             </ejs-accumulationchart>
+		</div>
+	</div>
+
+	@* spline chart *@
+	<div class="col-md-8">
+		<div class="widget chart">
+			<div class="title p-4">
+				<h5 class="fw-bold">Expense vs Income</h5>
+			</div>
+			<ejs-chart id="splineChart" background="#1a222b"
+					   @* palettes=@(new string[]{"#4caf50", "#f44336"}) *@
+			>
+				<e-chart-primaryxaxis valueType="Category">
+					<e-majorgridlines width="0"></e-majorgridlines>
+					<e-majorticklines width="1"></e-majorticklines>
+				</e-chart-primaryxaxis>
+				<e-chart-primaryyaxis>
+					<e-majorgridlines width="1" color="#32414d" dashArray="3,5"></e-majorgridlines>
+					<e-majorticklines width="0"></e-majorticklines>
+					<e-linestyle width="0"></e-linestyle>
+				</e-chart-primaryyaxis>
+				<e-chart-chartarea>
+					<e-chartarea-border width="0"></e-chartarea-border>
+				</e-chart-chartarea>
+				<e-series-collection>
+					<e-series dataSource="@ViewBag.SplineChartData" xName="day" yName="income" type="Spline" name="Income" fill="#4caf50" width="3"></e-series>
+					<e-series dataSource="@ViewBag.SplineChartData" xName="day" yName="expense" type="Spline" name="Expense" fill="#f44336" width="3"></e-series>
+				</e-series-collection>
+				<e-chart-legendsettings visible="true" position="Top" toggleVisibility="true">
+					<e-legendsettings-textstyle color="white" size="1rem"></e-legendsettings-textstyle>
+				</e-chart-legendsettings>
+				<e-chart-tooltipsettings enable="true" shared></e-chart-tooltipsettings>
+			</ejs-chart>
 		</div>
 	</div>
 </div>
