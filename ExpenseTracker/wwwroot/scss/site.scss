@@ -1,3 +1,8 @@
+// Define color variables
+$primary-bg-color: #12161d;
+$secondary-bg-color: #1e232b;
+$tertiary-bg-color: rgba(75,82,85,0.4);
+
 html {
     font-size: 14px;
 }
@@ -26,7 +31,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #12161d;
+    background-color: $primary-bg-color;
     color: white;
 }
 
@@ -41,6 +46,10 @@ body {
 
 .e-bigger {
     font-size: x-large;
+}
+
+.main-content {
+    margin-left: 250px;
 }
 
 /*breadcrumb*/
@@ -69,7 +78,15 @@ body {
     border-radius: 5px;
 }
 
+/*sidebar*/
+#sidebar {
+    background-color: $primary-bg-color;
+    border-right: 1px dashed $tertiary-bg-color;
+    padding: 10px 20px;
+}
+
+/*widget*/
 .widget {
     border-radius: 1rem;
-    background-color: #1e232b;
+    background-color: $secondary-bg-color;
 }
