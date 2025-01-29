@@ -28,7 +28,8 @@ namespace ExpenseTracker.Controllers
         // GET: Transaction/Create
         public IActionResult AddOrEdit()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
+            //ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
+            PopulateCategories();
             return View(new Transaction());
         }
 
@@ -45,7 +46,8 @@ namespace ExpenseTracker.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", transaction.CategoryId);
+            //ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", transaction.CategoryId);
+            PopulateCategories();
             return View(transaction);
         }
 
@@ -62,6 +64,15 @@ namespace ExpenseTracker.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [NonAction]
+        public void PopulateCategories()
+        {
+            var CategoryCollection = _context.Categories.ToList(); //query the list of Categories from db 
+            Category DefaultCategory = new Category() { CategoryId=0, Title="Choose the category"}; //query the default category
+            CategoryCollection.Insert(0, DefaultCategory); //insert the default category
+            ViewBag.Categories = CategoryCollection; //save the categories
         }
     }
 }

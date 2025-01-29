@@ -19,7 +19,7 @@ namespace ExpenseTracker.Models
 
         [NotMapped]
         public string? TitleWithIcon {
-            get { return this.Icon + " " + this.Title; }
+            get { return this.Icon + " " + this.Title; } //to display title with icon
 
         }
     }
