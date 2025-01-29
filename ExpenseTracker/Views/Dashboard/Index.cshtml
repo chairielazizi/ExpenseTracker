@@ -1,3 +1,66 @@
 ﻿@{
 	ViewData["isDashboard"] = true;
 }
+
+@* summary widget *@
+<div class="row mb-4">
+	@* total income *@
+	<div class="col-md-4">
+		<div class="d-flex flex-row widget summary income">
+		<div class="d-flex flex-column justify-content-center">
+			<i class="fa-solid fa-dollar-sign fa-2xl"></i>
+		</div>
+		<div class="d-flex flex-column m-auto py-3">
+			<span class="lead">Total Income</span>
+			<h1 class="fw-bold display-6">@ViewBag.TotalIncome</h1>
+		</div>
+	</div>
+	</div>
+	@* total expense *@
+	<div class="col-md-4">
+		<div class="d-flex flex-row widget summary expense">
+		<div class="d-flex flex-column justify-content-center">
+			<i class="fa-solid fa-dollar-sign fa-2xl"></i>
+		</div>
+		<div class="d-flex flex-column m-auto py-3">
+			<span class="lead">Total Expense</span>
+			<h1 class="fw-bold display-6">@ViewBag.TotalExpense</h1>
+		</div>
+	</div>
+	</div>
+	@* balance *@
+	<div class="col-md-4">
+		<div class="d-flex flex-row widget summary balance">
+		<div class="d-flex flex-column justify-content-center">
+			<i class="fa-solid fa-dollar-sign fa-2xl"></i>
+		</div>
+		<div class="d-flex flex-column m-auto py-3">
+			<span class="lead">Balance</span>
+			<h1 class="fw-bold display-6">@ViewBag.Balance</h1>
+		</div>
+	</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script src="https://cdn.syncfusion.com/ej2/ej2-locale/ej2-locale.js"></script>
+	<script>
+		// Load the Malaysia locale data
+		ej.base.L10n.load({
+			'ms-MY': {
+				'grid': {
+					'EmptyRecord': 'Tiada rekod untuk dipaparkan',
+					'True': 'Benar',
+					'False': 'Salah',
+					'InvalidFilterMessage': 'Data penapis tidak sah',
+					// Add other translations as needed
+				},
+				// Add other components' translations as needed
+			}
+		});
+
+		// Set the culture and currency code
+		ej.base.setCulture('ms-MY');
+		ej.base.setCurrencyCode('MYR');
+	</script>
+}

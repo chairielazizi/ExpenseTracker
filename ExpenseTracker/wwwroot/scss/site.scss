@@ -85,8 +85,44 @@ body {
     padding: 10px 20px;
 }
 
-/*widget*/
+/* Widget */
 .widget {
     border-radius: 1rem;
     background-color: $secondary-bg-color;
+
+    &.summary {
+        > div:first-child {
+            background-color: #222b33;
+            padding: 1rem;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+
+            i {
+                font-weight: bold;
+            }
+        }
+    }
+
+    &.income {
+        > div:first-child {
+            color: #65da41;
+        }
+    }
+
+    &.expense {
+        > div:first-child {
+            color: #ff4e48;
+        }
+    }
+
+    &.balance {
+        > div:first-child {
+            color: #2aa1ff;
+        }
+    }
+
+    &.chart {
+        padding: 5px;
+    }
 }
+
